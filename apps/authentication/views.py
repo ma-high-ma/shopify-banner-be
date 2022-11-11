@@ -83,9 +83,7 @@ class Auth2View(APIView):
         script_tag_service.add()
         banner = Banner.objects.create(website_id=website.id)
 
-        # admin_dashboard_url = f"https://{shop}/admin/apps/testapp/dashboard/"
-        # admin_dashboard_url = f"https://mahima-be.ngrok.io/dashboard/"
-        admin_dashboard_url = f"https://mahima-fe.app.vtxhub.com/"
+        admin_dashboard_url = f"https://mahima-fe.app.vtxhub.com/?website_id={website.id}"
         print("dash url = ", admin_dashboard_url)
         return redirect(admin_dashboard_url)
 
@@ -118,79 +116,3 @@ class WebhookView(APIView):
 
 
 """----------------------------------------------"""
-
-# def get_shop_details(self, shop, access_token):
-#     res = requests.get(
-#         f"https://{shop}/admin/api/2021-04/shop.json",
-#         headers={"X-Shopify-Access-Token": access_token}
-#     )
-#     print("shop response = ", res.text)
-#     return
-
-# def get_access_token_from_shopify(self, shop, code):
-#     data = {
-#         "client_id": "2ec348a43d44e5488a22b0cfecee634e",
-#         "client_secret": "39813af02d0e80ef8e04f92317b7e0e9",
-#         "code": code}
-#     res = requests.post(
-#         f"https://{shop}/admin/oauth/access_token",
-#         data=data,
-#         verify=False,
-#         timeout=60
-#     )
-#     """
-#     response =  {
-#     "access_token":"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",
-#     "scope":"write_orders,write_customers,write_products,write_content,write_price_rules,write_themes"}
-#     """
-#     print("response = ", res.json())
-#     return res.json()["access_token"]
-
-# def create_redirect_url(self, shop, absolute_url):
-#     SCOPES = (
-#         "read_orders,write_orders,read_customers,write_customers,"
-#         "read_products,write_products,read_content,write_content,"
-#         "read_price_rules,write_price_rules,read_themes,write_themes"
-#     )
-#     SHOPIFY_API_KEY = "2ec348a43d44e5488a22b0cfecee634e"
-#     redirect_url = (
-#         f"https://{shop}/admin/oauth/authorize?"
-#         f"client_id={SHOPIFY_API_KEY}&scope={SCOPES}"
-#         # f"&redirect_uri={host}/account/oauth/shopify/authorize"
-#         f"&redirect_uri=https://c9ce4770160f.ngrok.io/auth2/"
-#         f"&grant_options[]=per_user"
-#         f"&state=signup"
-#     )
-#     return redirect_url
-
-"""
-        {"shop":
-        {"id":66971566298,
-        "name":"mahima-test-store", <-----
-        "email":"mahima061998@gmail.com", <-----
-        "domain":"mahima-test-store.myshopify.com", <------
-        "province":"Karnataka",
-        "country":"IN",
-        "address1":"Teacher's Colony",
-        "zip":"560034",
-        "city":"Bangalore","source":null,"phone":"","latitude":12.9204334,
-        "longitude":77.63571390000001,
-        "primary_locale":"en","address2":null,
-        "created_at":"2022-10-05T00:52:31+05:30","updated_at":"2022-10-05T01:55:55+05:30",
-        "country_code":"IN","country_name":"India","currency":"INR",
-        "customer_email":"mahima061998@gmail.com",
-        "timezone":"(GMT+05:30) Asia\/Calcutta","iana_timezone":"Asia\/Calcutta",
-        "shop_owner":"mahima-test-store Admin",
-        "money_format":"Rs. {{amount}}","money_with_currency_format":"Rs. {{amount}}",
-        "weight_unit":"kg",
-        "province_code":"KA","taxes_included":false,
-        "auto_configure_tax_inclusivity":null,"tax_shipping":null,
-        "county_taxes":true,"plan_display_name":"Developer Preview",
-        "plan_name":"partner_test", <----
-        "has_discounts":false,"has_gift_cards":false,
-        "myshopify_domain":"mahima-test-store.myshopify.com",
-        "google_apps_domain":null,"google_apps_login_enabled":null,
-        "money_in_emails_format":"Rs. {{amount}}","money_with_currency_in_emails_format":"Rs. {{amount}}",
-        "eligible_for_payments":false,"requires_extra_payments_agreement":false,"password_enabled":true,"has_storefront":true,"eligible_for_card_reader_giveaway":false,"finances":true,"primary_location_id":71697334490,"cookie_consent_level":"implicit","visitor_tracking_consent_preference":"allow_all","checkout_api_supported":false,"multi_location_enabled":true,"setup_required":false,"pre_launch_enabled":false,
-        "enabled_presentment_currencies":["INR"]}}
-        """

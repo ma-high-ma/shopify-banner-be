@@ -11,3 +11,5 @@ DEFAULT_STYLE = {
     "padding":"35px",
     "text_align": "center"
 }
+
+DEFAULT_TEXT = "Add some alluring text here"
